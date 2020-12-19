@@ -1,0 +1,55 @@
+﻿<Window x:Class="UiS2pViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UiS2pViewer"
+        mc:Ignorable="d"
+        Title="S2P viewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+		<Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
+            <MenuItem Header="_File">
+				<MenuItem Header="_Open" InputGestureText="Ctrl+O"></MenuItem>
+	            <MenuItem Header="_Save project" InputGestureText="CTRL+S"></MenuItem>
+	            <MenuItem Header="Save project as..."></MenuItem>
+	            <Separator />
+	            <MenuItem Header="Export graph to image"></MenuItem>
+	            <MenuItem Header="Export graph to CSV"></MenuItem>
+	            <Separator />
+				<MenuItem Header="Exit" InputGestureText="CTRL+Q"></MenuItem>
+			</MenuItem>
+			<MenuItem Header="_Edit"></MenuItem>
+			<MenuItem Header="_View"></MenuItem>
+			<MenuItem Header="_Help"></MenuItem>
+		</Menu>
+		<TreeView DockPanel.Dock="Left" MaxWidth="250">
+            <TreeViewItem Header="NoSavedProject" IsExpanded="true">
+				<TreeViewItem Header="Sources data" IsExpanded="true">
+					<TreeViewItem Header="example.s2p" Margin="0 0 10 0"></TreeViewItem>
+                </TreeViewItem>
+				<TreeViewItem Header="Graphs" IsExpanded="true">
+					<TreeViewItem Header="S21, dB">
+						<CheckBox>func1</CheckBox>
+					</TreeViewItem>
+					<TreeViewItem Header="S21, °"></TreeViewItem>
+					<TreeViewItem Header="S12, dB"></TreeViewItem>
+					<TreeViewItem Header="S12, °"></TreeViewItem>
+					<TreeViewItem Header="S11, dB"></TreeViewItem>
+					<TreeViewItem Header="S11, °"></TreeViewItem>
+					<TreeViewItem Header="S22, dB"></TreeViewItem>
+					<TreeViewItem Header="S22, °"></TreeViewItem>
+				</TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+		<TabControl>
+            <TabItem Header="S21, dB"></TabItem>
+			<TabItem Header="S21, °"></TabItem>
+			<TabItem Header="S12, dB"></TabItem>
+			<TabItem Header="S12, °"></TabItem>
+			<TabItem Header="S11, dB"></TabItem>
+			<TabItem Header="S11, °"></TabItem>
+			<TabItem Header="S22, dB"></TabItem>
+			<TabItem Header="S22, °"></TabItem>
+		</TabControl>
+    </DockPanel>
+</Window>
