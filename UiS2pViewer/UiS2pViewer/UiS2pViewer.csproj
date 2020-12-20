@@ -63,12 +63,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enums\FrequencyUnits.cs" />
+    <Compile Include="Enums\Sparametrs.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AxisSettings.cs" />
+    <Compile Include="Models\Function.cs" />
+    <Compile Include="Models\Graph.cs" />
+    <Compile Include="Models\Interfaces\IFunction.cs" />
+    <Compile Include="Models\Interfaces\IGraph.cs" />
+    <Compile Include="Models\Interfaces\IMarker.cs" />
+    <Compile Include="Models\Interfaces\ISourceData.cs" />
+    <Compile Include="Models\Marker.cs" />
+    <Compile Include="Models\SourceData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,5 +105,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
