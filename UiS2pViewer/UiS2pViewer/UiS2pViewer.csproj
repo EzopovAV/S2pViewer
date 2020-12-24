@@ -63,15 +63,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Enums\FrequencyUnits.cs" />
     <Compile Include="Enums\Sparametrs.cs" />
+    <Compile Include="Enums\YAxisUnits.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AxisSettings.cs" />
+    <Compile Include="Models\AxisSettingsBase.cs" />
     <Compile Include="Models\Function.cs" />
     <Compile Include="Models\Graph.cs" />
     <Compile Include="Models\Interfaces\IFunction.cs" />
@@ -80,6 +80,8 @@
     <Compile Include="Models\Interfaces\ISourceData.cs" />
     <Compile Include="Models\Marker.cs" />
     <Compile Include="Models\SourceData.cs" />
+    <Compile Include="Models\XAxisSettings.cs" />
+    <Compile Include="Models\YAxisSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +107,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\normalizerS2Pfiles\normalizerS2Pfiles\normalizerS2Pfiles.csproj">
+      <Project>{44331D32-410D-4DAE-A0B5-EF10EC425BBE}</Project>
+      <Name>normalizerS2Pfiles</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
