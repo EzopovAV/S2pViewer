@@ -1,8 +1,11 @@
-﻿namespace UiS2pViewer.Models.Interfaces
+﻿using System.Windows.Media;
+
+namespace UiS2pViewer.Models.Interfaces
 {
-	class IMarker
+	public interface IMarker
 	{
 		string Name { get; set; }
 		double Frequence { get; set; }
+		Color Color { get; set; }
 	}
 }

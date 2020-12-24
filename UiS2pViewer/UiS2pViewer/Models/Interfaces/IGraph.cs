@@ -1,4 +1,6 @@
-﻿using System.Windows.Media;
+﻿using System.Collections.Generic;
+using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace UiS2pViewer.Models.Interfaces
 {
@@ -11,5 +13,6 @@ namespace UiS2pViewer.Models.Interfaces
 		bool ShowGrid { get; set; }
 		Color GridColor { get; set; }
 		bool UseSecondYaxis { get; set; }
+		List<IFunction> FunctionList { get; set; }
 	}
 }
