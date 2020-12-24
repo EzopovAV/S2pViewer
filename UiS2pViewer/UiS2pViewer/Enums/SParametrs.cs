@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UiS2pViewer.Enums
+﻿namespace UiS2pViewer.Enums
 {
 	public enum Sparametrs
 	{
 		S21Db,
-		S21Grad,
+		S21Degrees,
 		S12Db,
-		S12Grad,
+		S12Degrees,
 		S11Db,
-		S11Grad,
+		S11Degrees,
 		S22Db,
-		S22Grad,
+		S22Degrees,
 	}
 }
