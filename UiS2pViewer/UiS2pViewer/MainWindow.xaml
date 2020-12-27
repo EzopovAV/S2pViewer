@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="S2P viewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <DockPanel>
-		<Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top">
+		
+		<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
             <MenuItem Header="_File">
 				<MenuItem Header="_Open" InputGestureText="Ctrl+O"></MenuItem>
 	            <MenuItem Header="_Save project" InputGestureText="CTRL+S"></MenuItem>
@@ -22,34 +23,58 @@
 			<MenuItem Header="_View"></MenuItem>
 			<MenuItem Header="_Help"></MenuItem>
 		</Menu>
+		
 		<TreeView DockPanel.Dock="Left" MaxWidth="250">
-            <TreeViewItem Header="NoSavedProject" IsExpanded="true">
-				<TreeViewItem Header="Sources data" IsExpanded="true">
-					<TreeViewItem Header="example.s2p" Margin="0 0 10 0"></TreeViewItem>
-                </TreeViewItem>
-				<TreeViewItem Header="Graphs" IsExpanded="true">
-					<TreeViewItem Header="S21, dB">
-						<CheckBox>func1</CheckBox>
-					</TreeViewItem>
-					<TreeViewItem Header="S21, °"></TreeViewItem>
-					<TreeViewItem Header="S12, dB"></TreeViewItem>
-					<TreeViewItem Header="S12, °"></TreeViewItem>
-					<TreeViewItem Header="S11, dB"></TreeViewItem>
-					<TreeViewItem Header="S11, °"></TreeViewItem>
-					<TreeViewItem Header="S22, dB"></TreeViewItem>
-					<TreeViewItem Header="S22, °"></TreeViewItem>
+			<!-- Add the ability to change the MaxWidth through the user interface  -->
+			<TreeViewItem Header="NoSavedProject" IsExpanded="true" Margin="0 0 10 0">
+				
+				<TreeViewItem x:Name="sourceDataTreeViewItem" Header="Sources data" IsExpanded="true">
+					<TreeViewItem.ItemTemplate>
+						<DataTemplate>
+							<TextBlock  Text="{Binding Path=Name}"></TextBlock>
+						</DataTemplate>
+					</TreeViewItem.ItemTemplate>
 				</TreeViewItem>
-            </TreeViewItem>
+				
+				<TreeViewItem x:Name="graphsTreeViewItem" Header="Graphs" IsExpanded="true">
+					<TreeViewItem.ItemTemplate>
+						<HierarchicalDataTemplate ItemsSource="{Binding Path=FunctionList}">
+							<TextBlock Text="{Binding Path=Name}"></TextBlock>
+							<HierarchicalDataTemplate.ItemTemplate>
+								<HierarchicalDataTemplate ItemsSource="{Binding Path=MarkerList}">
+									<StackPanel Orientation="Horizontal">
+										<TextBlock Text="{Binding Path=Name}"></TextBlock>
+										<CheckBox IsChecked="True" Margin="5,0,0,0"></CheckBox>
+									</StackPanel>
+									<HierarchicalDataTemplate.ItemTemplate>
+										<DataTemplate>
+											<StackPanel Orientation="Horizontal">
+												<TextBlock Text="{Binding Path=Name}"></TextBlock>
+												<CheckBox IsChecked="True" Margin="5,0,0,0"></CheckBox>
+											</StackPanel>
+										</DataTemplate>
+									</HierarchicalDataTemplate.ItemTemplate>
+								</HierarchicalDataTemplate>
+							</HierarchicalDataTemplate.ItemTemplate>
+						</HierarchicalDataTemplate>
+					</TreeViewItem.ItemTemplate>
+				</TreeViewItem>
+				
+			</TreeViewItem>
         </TreeView>
-		<TabControl>
-            <TabItem Header="S21, dB"></TabItem>
-			<TabItem Header="S21, °"></TabItem>
-			<TabItem Header="S12, dB"></TabItem>
-			<TabItem Header="S12, °"></TabItem>
-			<TabItem Header="S11, dB"></TabItem>
-			<TabItem Header="S11, °"></TabItem>
-			<TabItem Header="S22, dB"></TabItem>
-			<TabItem Header="S22, °"></TabItem>
+		
+		<TabControl x:Name="graphsTabControl">
+			<TabControl.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Path=Name}"/>
+				</DataTemplate>
+			</TabControl.ItemTemplate>
+			<TabControl.ContentTemplate>
+				<DataTemplate>
+					<TextBlock Text="an ad could be here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+				</DataTemplate>
+			</TabControl.ContentTemplate>
 		</TabControl>
+		
     </DockPanel>
 </Window>
