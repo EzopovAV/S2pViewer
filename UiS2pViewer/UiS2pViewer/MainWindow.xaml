@@ -27,16 +27,16 @@
 		<TreeView DockPanel.Dock="Left" MaxWidth="250">
 			<!-- Add the ability to change the MaxWidth through the user interface  -->
 			<TreeViewItem Header="NoSavedProject" IsExpanded="true" Margin="0 0 10 0">
-				
-				<TreeViewItem x:Name="sourceDataTreeViewItem" Header="Sources data" IsExpanded="true">
+
+				<TreeViewItem x:Name="sourceDataTreeViewItem" Header="Sources data" IsExpanded="true" ItemsSource="{Binding Path=SourceDatas}">
 					<TreeViewItem.ItemTemplate>
 						<DataTemplate>
 							<TextBlock  Text="{Binding Path=Name}"></TextBlock>
 						</DataTemplate>
 					</TreeViewItem.ItemTemplate>
 				</TreeViewItem>
-				
-				<TreeViewItem x:Name="graphsTreeViewItem" Header="Graphs" IsExpanded="true">
+
+				<TreeViewItem x:Name="graphsTreeViewItem" Header="Graphs" IsExpanded="true" ItemsSource="{Binding Path=Graphs}">
 					<TreeViewItem.ItemTemplate>
 						<HierarchicalDataTemplate ItemsSource="{Binding Path=FunctionList}">
 							<TextBlock Text="{Binding Path=Name}"></TextBlock>
@@ -62,8 +62,8 @@
 				
 			</TreeViewItem>
         </TreeView>
-		
-		<TabControl x:Name="graphsTabControl">
+
+		<TabControl x:Name="graphsTabControl" ItemsSource="{Binding Path=Graphs}" SelectedItem="{Binding Path=SelectedGraph}">
 			<TabControl.ItemTemplate>
 				<DataTemplate>
 					<TextBlock Text="{Binding Path=Name}"/>

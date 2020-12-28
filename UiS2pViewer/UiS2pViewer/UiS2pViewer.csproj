@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ApplicationViewModel.cs" />
     <Compile Include="Interfaces\ISourceDataProvider.cs" />
     <Compile Include="SourceDataProvider.cs" />
     <Page Include="MainWindow.xaml">
