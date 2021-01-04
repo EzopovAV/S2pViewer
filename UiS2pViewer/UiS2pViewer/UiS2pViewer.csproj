@@ -55,8 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApplicationViewModel.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="DefaultDialogService.cs" />
+    <Compile Include="Interfaces\IDialogService.cs" />
     <Compile Include="Interfaces\ISourceDataProvider.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="SourceDataProvider.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

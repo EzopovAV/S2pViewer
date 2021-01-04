@@ -6,11 +6,10 @@
         xmlns:local="clr-namespace:UiS2pViewer"
         mc:Ignorable="d"
         Title="S2P viewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-    <DockPanel>
-		
+	<DockPanel>
 		<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
             <MenuItem Header="_File">
-				<MenuItem Header="_Open" InputGestureText="Ctrl+O"></MenuItem>
+				<MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{Binding Path=OpenCommand}"></MenuItem>
 	            <MenuItem Header="_Save project" InputGestureText="CTRL+S"></MenuItem>
 	            <MenuItem Header="Save project as..."></MenuItem>
 	            <Separator />
@@ -21,7 +20,7 @@
 			</MenuItem>
 			<MenuItem Header="_Edit"></MenuItem>
 			<MenuItem Header="_View"></MenuItem>
-			<MenuItem Header="_Help"></MenuItem>
+			<MenuItem Header="_Help" Command="Help"></MenuItem>
 		</Menu>
 		
 		<TreeView DockPanel.Dock="Left" MaxWidth="250">

@@ -1,4 +1,5 @@
-﻿using UiS2pViewer.Interfaces;
+﻿using System.IO;
+using UiS2pViewer.Interfaces;
 using UiS2pViewer.Models;
 using UiS2pViewer.Models.Interfaces;
 
@@ -10,7 +11,7 @@ namespace UiS2pViewer
 		{
 			return new SourceData {
 				FullPathS2pFile = fullPathS2pFile,
-				Name = fullPathS2pFile,
+				Name = Path.GetFileName(fullPathS2pFile),
 			};
 		}
 	}
