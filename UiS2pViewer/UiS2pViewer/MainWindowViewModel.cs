@@ -1,7 +1,10 @@
-﻿using System;
+﻿using GraphControlLibrary;
+using GraphControlLibrary.Enums;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media;
 using UiS2pViewer.Interfaces;
 using UiS2pViewer.Models.Interfaces;
 
@@ -18,8 +21,25 @@ namespace UiS2pViewer
 			_sourceDataProvider = sourceDataProvider;
 
 			SourceDatas = new ObservableCollection<ISourceData>();
-		}
 
+			Curves = new ObservableCollection<Curve>
+			{
+				new Curve(
+					new double[]{10, 30, 50, 70, 90, 110, 130, 150, 170, 190},
+					new double[]{150, 140, 170, 120, 190, 100, 210, 80, 230, 60},
+					10,
+					new SolidColorBrush(Color.FromRgb(20, 20, 127)),
+					LineType.solid),
+
+				new Curve(
+					new double[]{150, 140, 170, 120, 190, 100, 210, 80, 230, 60},
+					new double[]{10, 30, 50, 70, 90, 110, 130, 150, 170, 190},
+					10,
+					new SolidColorBrush(Color.FromRgb(20, 127, 20)),
+					LineType.solid),
+			};
+		}
+		public ObservableCollection<Curve> Curves { get; set; }
 		public ObservableCollection<IGraph> Graphs { get; set; }
 		public ObservableCollection<ISourceData> SourceDatas { get; set; }
 
