@@ -4,6 +4,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Media;
 using UiS2pViewer.Interfaces;
 using UiS2pViewer.Models.Interfaces;
@@ -15,7 +16,7 @@ namespace UiS2pViewer
 		private readonly IDialogService _dialogService;
 		private readonly ISourceDataProvider _sourceDataProvider;
 
-		public MainWindowViewModel(IDialogService dialogService, ISourceDataProvider sourceDataProvider)
+		public MainWindowViewModel(IDialogService dialogService, ISourceDataProvider sourceDataProvider, FrameworkElement graphPanelContext)
 		{
 			_dialogService = dialogService;
 			_sourceDataProvider = sourceDataProvider;
@@ -28,17 +29,23 @@ namespace UiS2pViewer
 					new double[]{10, 30, 50, 70, 90, 110, 130, 150, 170, 190},
 					new double[]{150, 140, 170, 120, 190, 100, 210, 80, 230, 60},
 					10,
-					new SolidColorBrush(Color.FromRgb(20, 20, 127)),
+					new SolidColorBrush(Color.FromRgb(20, 20, 0)),
 					LineType.solid),
 
 				new Curve(
 					new double[]{150, 140, 170, 120, 190, 100, 210, 80, 230, 60},
 					new double[]{10, 30, 50, 70, 90, 110, 130, 150, 170, 190},
 					10,
-					new SolidColorBrush(Color.FromRgb(20, 127, 20)),
+					new SolidColorBrush(Color.FromRgb(20, 0, 20)),
 					LineType.solid),
 			};
+			graphPanelViewModel = new GraphPanelViewModel(graphPanelContext);
+			graphPanelViewModel.Curves = Curves;
+			graphPanelViewModel.AddCurve(
+				new double[] { 15, 140, 170, 120, 190, 100, 210, 80, 230, 60 },
+				new double[] { 10, 300, 50, 70, 90, 110, 130, 150, 170, 190 });
 		}
+		public GraphPanelViewModel graphPanelViewModel { get; set; }
 		public ObservableCollection<Curve> Curves { get; set; }
 		public ObservableCollection<IGraph> Graphs { get; set; }
 		public ObservableCollection<ISourceData> SourceDatas { get; set; }
@@ -69,6 +76,7 @@ namespace UiS2pViewer
 								var sourceData = _sourceDataProvider.GetSourceData(_dialogService.FilePath);
 								SourceDatas.Add(sourceData);
 								_dialogService.ShowMessage("File is opend.");
+
 							}
 						}
 						catch (Exception ex)

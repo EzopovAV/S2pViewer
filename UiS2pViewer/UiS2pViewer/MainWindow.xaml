@@ -74,8 +74,10 @@
 				</DataTemplate>
 			</TabControl.ContentTemplate>
 		</TabControl>
+		<TextBlock Text="{Binding ElementName=MyGraphPanel, Path=ActualWidth}"></TextBlock>
 
-		<graphcontrollibrary:GraphPanel Name="MyGraphPanel"></graphcontrollibrary:GraphPanel>
+		<graphcontrollibrary:GraphPanel Width="Auto" Name="MyGraphPanel"></graphcontrollibrary:GraphPanel>
+		
 		
     </DockPanel>
 </Window>
