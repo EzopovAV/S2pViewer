@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UiS2pViewer" xmlns:graphcontrollibrary="clr-namespace:GraphControlLibrary;assembly=GraphControlLibrary"
 		mc:Ignorable="d"
         Title="S2P viewer" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-	<DockPanel>
+	<DockPanel UseLayoutRounding="True">
 		<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
             <MenuItem Header="_File">
 				<MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{Binding Path=OpenCommand}"></MenuItem>
@@ -76,7 +76,7 @@
 		</TabControl>
 		<TextBlock Text="{Binding ElementName=MyGraphPanel, Path=ActualWidth}"></TextBlock>
 
-		<graphcontrollibrary:GraphPanel Width="Auto" Name="MyGraphPanel"></graphcontrollibrary:GraphPanel>
+		<graphcontrollibrary:GraphPanel Name="MyGraphPanel"></graphcontrollibrary:GraphPanel>
 		
 		
     </DockPanel>

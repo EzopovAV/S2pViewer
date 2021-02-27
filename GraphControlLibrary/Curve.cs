@@ -1,16 +1,16 @@
 ﻿using GraphControlLibrary.Enums;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
 
 namespace GraphControlLibrary
 {
-	public class Curve
+	public class Curve : INotifyPropertyChanged
 	{
 		private readonly double[] _sourceDataX;
 		private readonly double[] _sourceDataY;
-		private int _numberOfPointsToDisplay;
-		private PointCollection _pointsToDisplay;
 
 		public Curve(double[] sourceDataX, double[] sourceDataY, int numberOfPointsToDisplay, Brush brush, LineType type, int width = 1)
 		{
@@ -22,10 +22,43 @@ namespace GraphControlLibrary
 			Width = width;
 		}
 
-		public Brush Brush { get; set; }
-		public LineType Type { get; set; }
-		public int Width { get; set; }
+		private Brush _brush;
+		public Brush Brush
+		{
+			get
+			{
+				return _brush;
+			}
+			set
+			{
+				_brush = value;
+				OnPropertyChanged("Brush");
+			}
+		}
 
+		private LineType _type;
+		public LineType Type
+		{
+			get => _type;
+			set
+			{
+				_type = value;
+				OnPropertyChanged("Type");
+			}
+		}
+
+		private int _width;
+		public int Width
+		{
+			get => _width;
+			set
+			{
+				_width = value;
+				OnPropertyChanged("Width");
+			}
+		}
+
+		private int _numberOfPointsToDisplay;
 		public int NumberOfPointsToDisplay
 		{
 			get => _numberOfPointsToDisplay;
@@ -35,10 +68,13 @@ namespace GraphControlLibrary
 				{
 					_numberOfPointsToDisplay = value;
 					_pointsToDisplay = CalculatePointsToDisplay(_sourceDataX, _sourceDataY, _numberOfPointsToDisplay);
+					OnPropertyChanged("NumberOfPointsToDisplay");
+					OnPropertyChanged("PointsToDisplay");
 				}
 			}
 		}
 
+		private PointCollection _pointsToDisplay;
 		public PointCollection PointsToDisplay
 		{
 			get
@@ -50,6 +86,12 @@ namespace GraphControlLibrary
 
 				return _pointsToDisplay;
 			}
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		public void OnPropertyChanged([CallerMemberName]string prop = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 		}
 
 		private PointCollection CalculatePointsToDisplay(double[] sourceDataX, double[] sourceDataY, int numberOfPointsToDisplay)
