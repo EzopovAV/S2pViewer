@@ -11,7 +11,7 @@ namespace GraphControlLibrary
 		public GraphPanel()
 		{
 			InitializeComponent();
-			DataContext = new GraphPanelViewModel();
+			//DataContext = new GraphPanelViewModel(); //Why?
 		}
 
 		private void graphPanel_SizeChanged(object sender, SizeChangedEventArgs e)

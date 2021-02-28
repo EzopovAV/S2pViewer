@@ -1,8 +1,6 @@
-﻿using System;
+﻿using GraphControlLibrary;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using UiS2pViewer.Models.Interfaces;
 
@@ -18,5 +16,6 @@ namespace UiS2pViewer.Models
 		public Color GridColor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public bool UseSecondYaxis { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 		public List<IFunction> FunctionList { get; set; }
+		public GraphPanelViewModel ViewModel { get; set; }
 	}
 }

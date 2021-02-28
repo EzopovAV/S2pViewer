@@ -7,7 +7,7 @@ namespace UiS2pViewer
 		public MainWindow()
 		{
 			InitializeComponent();
-			DataContext = new MainWindowViewModel(new DefaultDialogService(), new SourceDataProvider(), MyGraphPanel);
+			DataContext = new MainWindowViewModel(new DefaultDialogService(), new SourceDataProvider());
 		}
 	}
 }

@@ -70,13 +70,11 @@
 			</TabControl.ItemTemplate>
 			<TabControl.ContentTemplate>
 				<DataTemplate>
-					<TextBlock Text="an ad could be here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					<graphcontrollibrary:GraphPanel DataContext="{Binding Path=ViewModel}"></graphcontrollibrary:GraphPanel>
 				</DataTemplate>
 			</TabControl.ContentTemplate>
 		</TabControl>
-		<TextBlock Text="{Binding ElementName=MyGraphPanel, Path=ActualWidth}"></TextBlock>
 
-		<graphcontrollibrary:GraphPanel Name="MyGraphPanel"></graphcontrollibrary:GraphPanel>
 		
 		
     </DockPanel>

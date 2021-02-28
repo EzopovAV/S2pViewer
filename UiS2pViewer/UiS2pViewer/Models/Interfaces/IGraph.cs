@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Windows.Documents;
+﻿using GraphControlLibrary;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace UiS2pViewer.Models.Interfaces
@@ -14,5 +14,6 @@ namespace UiS2pViewer.Models.Interfaces
 		Color GridColor { get; set; }
 		bool UseSecondYaxis { get; set; }
 		List<IFunction> FunctionList { get; set; }
+		GraphPanelViewModel ViewModel { get; set; }
 	}
 }
