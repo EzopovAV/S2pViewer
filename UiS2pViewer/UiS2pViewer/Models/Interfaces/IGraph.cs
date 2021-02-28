@@ -1,5 +1,6 @@
 ﻿using GraphControlLibrary;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace UiS2pViewer.Models.Interfaces
@@ -13,7 +14,8 @@ namespace UiS2pViewer.Models.Interfaces
 		bool ShowGrid { get; set; }
 		Color GridColor { get; set; }
 		bool UseSecondYaxis { get; set; }
-		List<IFunction> FunctionList { get; set; }
+		ObservableCollection<IFunction> FunctionList { get; set; }
 		GraphPanelViewModel ViewModel { get; set; }
+		ICommand AddNewFunctionCommand { get; }
 	}
 }

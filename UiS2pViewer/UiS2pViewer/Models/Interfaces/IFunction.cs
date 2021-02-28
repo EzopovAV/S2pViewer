@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using System.Windows.Media;
 using UiS2pViewer.Enums;
 
@@ -10,6 +11,7 @@ namespace UiS2pViewer.Models.Interfaces
 		ISourceData SourceData { get; set; }
 		Sparametrs Sparametrs { get; set; }
 		Color Color { get; set; }
-		List<IMarker> MarkerList { get; set; }
+		ObservableCollection<IMarker> MarkerList { get; set; }
+		ICommand AddNewMarkerCommand { get; }
 	}
 }

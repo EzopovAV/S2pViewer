@@ -9,45 +9,90 @@
 	<DockPanel UseLayoutRounding="True">
 		<Menu DockPanel.Dock="Top" VerticalAlignment="Top">
             <MenuItem Header="_File">
-				<MenuItem Header="_Open" InputGestureText="Ctrl+O" Command="{Binding Path=OpenCommand}"></MenuItem>
-	            <MenuItem Header="_Save project" InputGestureText="CTRL+S"></MenuItem>
-	            <MenuItem Header="Save project as..."></MenuItem>
+				<MenuItem Header="_Open S2P file" InputGestureText="Ctrl+O" Command="{Binding Path=OpenCommand}"></MenuItem>
+				<MenuItem Header="_Save project" InputGestureText="Ctrl+S" IsEnabled="False"></MenuItem>
+				<MenuItem Header="Save project as..." IsEnabled="False"></MenuItem>
 	            <Separator />
-	            <MenuItem Header="Export graph to image"></MenuItem>
-	            <MenuItem Header="Export graph to CSV"></MenuItem>
+				<MenuItem Header="Export graph to image" IsEnabled="False"></MenuItem>
+				<MenuItem Header="Export graph to CSV" IsEnabled="False"></MenuItem>
 	            <Separator />
-				<MenuItem Header="Exit" InputGestureText="CTRL+Q"></MenuItem>
+				<MenuItem Header="Exit" InputGestureText="Ctrl+Q" IsEnabled="False"></MenuItem>
 			</MenuItem>
-			<MenuItem Header="_Edit"></MenuItem>
-			<MenuItem Header="_View"></MenuItem>
-			<MenuItem Header="_Help" Command="Help"></MenuItem>
+			<MenuItem Header="_Edit" IsEnabled="False"></MenuItem>
+			<MenuItem Header="_View" IsEnabled="False"></MenuItem>
+			<MenuItem Header="_Help" IsEnabled="False"></MenuItem>
 		</Menu>
 		
 		<TreeView DockPanel.Dock="Left" MaxWidth="250">
 			<!-- Add the ability to change the MaxWidth through the user interface  -->
 			<TreeViewItem Header="NoSavedProject" IsExpanded="true" Margin="0 0 10 0">
-
 				<TreeViewItem x:Name="sourceDataTreeViewItem" Header="Sources data" IsExpanded="true" ItemsSource="{Binding Path=SourceDatas}">
+					<TreeViewItem.ContextMenu>
+						<ContextMenu>
+							<MenuItem Header="_Add S2P file" InputGestureText="Ctrl+O" Command="{Binding Path=OpenCommand}"></MenuItem>
+						</ContextMenu>
+					</TreeViewItem.ContextMenu>
 					<TreeViewItem.ItemTemplate>
 						<DataTemplate>
-							<TextBlock  Text="{Binding Path=Name}"></TextBlock>
+							<TextBlock  Text="{Binding Path=Name}">
+								<TextBlock.ContextMenu>
+									<ContextMenu>
+										<MenuItem Header="_Rename data source" Command="{Binding Path=RenameDataSourceCommand}"></MenuItem>
+										<MenuItem Header="_Data source properties" Command="{Binding Path=DataSourcePropertiesCommand}"></MenuItem>
+										<MenuItem Header="Remove data source from project" Command="{Binding Path=RemoveDataSourceFromProjectCommand}"></MenuItem>
+									</ContextMenu>
+								</TextBlock.ContextMenu>
+							</TextBlock>
 						</DataTemplate>
 					</TreeViewItem.ItemTemplate>
 				</TreeViewItem>
 
 				<TreeViewItem x:Name="graphsTreeViewItem" Header="Graphs" IsExpanded="true" ItemsSource="{Binding Path=Graphs}">
+					<TreeViewItem.ItemContainerStyle>
+						<Style TargetType="TreeViewItem">
+							<Setter Property="IsExpanded" Value="True"/>
+						</Style>
+					</TreeViewItem.ItemContainerStyle>
+					<TreeViewItem.ContextMenu>
+						<ContextMenu>
+							<MenuItem Header="_Add New Graph" Command="{Binding Path=AddNewGraphCommand}"></MenuItem>
+						</ContextMenu>
+					</TreeViewItem.ContextMenu>
 					<TreeViewItem.ItemTemplate>
 						<HierarchicalDataTemplate ItemsSource="{Binding Path=FunctionList}">
-							<TextBlock Text="{Binding Path=Name}"></TextBlock>
+							<TextBlock Text="{Binding Path=Name}">
+								<TextBlock.ContextMenu>
+									<ContextMenu>
+										<MenuItem Header="_Add new function" Command="{Binding Path=AddNewFunctionCommand}"></MenuItem>
+										<MenuItem Header="_Rename graph" Command="{Binding Path=RenameGraphCommand}"></MenuItem>
+										<MenuItem Header="_Open graph settings" Command="{Binding Path=OpenGraphSettingsCommand}"></MenuItem>
+										<MenuItem Header="_Dublicate graph" Command="{Binding Path=DublicateGraphCommand}"></MenuItem>
+										<MenuItem Header="Delete graph" Command="{Binding Path=DeleteGraphCommand}"></MenuItem>
+									</ContextMenu>
+								</TextBlock.ContextMenu>
+							</TextBlock>
 							<HierarchicalDataTemplate.ItemTemplate>
 								<HierarchicalDataTemplate ItemsSource="{Binding Path=MarkerList}">
 									<StackPanel Orientation="Horizontal">
+										<StackPanel.ContextMenu>
+											<ContextMenu>
+												<MenuItem Header="_Add new marker" Command="{Binding Path=AddNewMarkerCommand}"></MenuItem>
+												<MenuItem Header="_Open function settings" Command="{Binding Path=OpenFunctionSettingsCommand}"></MenuItem>
+												<MenuItem Header="Delete function" Command="{Binding Path=DeleteFunctionCommand}"></MenuItem>
+											</ContextMenu>
+										</StackPanel.ContextMenu>
 										<TextBlock Text="{Binding Path=Name}"></TextBlock>
 										<CheckBox IsChecked="True" Margin="5,0,0,0"></CheckBox>
 									</StackPanel>
 									<HierarchicalDataTemplate.ItemTemplate>
 										<DataTemplate>
 											<StackPanel Orientation="Horizontal">
+												<StackPanel.ContextMenu>
+													<ContextMenu>
+														<MenuItem Header="_Open marker settings" Command="{Binding Path=OpenMarkerSettingsCommand}"></MenuItem>
+														<MenuItem Header="Delete marker" Command="{Binding Path=DeleteMarkerCommand}"></MenuItem>
+													</ContextMenu>
+												</StackPanel.ContextMenu>
 												<TextBlock Text="{Binding Path=Name}"></TextBlock>
 												<CheckBox IsChecked="True" Margin="5,0,0,0"></CheckBox>
 											</StackPanel>
@@ -58,7 +103,6 @@
 						</HierarchicalDataTemplate>
 					</TreeViewItem.ItemTemplate>
 				</TreeViewItem>
-				
 			</TreeViewItem>
         </TreeView>
 
@@ -74,8 +118,5 @@
 				</DataTemplate>
 			</TabControl.ContentTemplate>
 		</TabControl>
-
-		
-		
     </DockPanel>
 </Window>
