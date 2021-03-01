@@ -13,18 +13,20 @@ namespace UiS2pViewer
 	{
 		private readonly IDialogService _dialogService;
 		private readonly ISourceDataProvider _sourceDataProvider;
+		private readonly IGraphFactory _graphProvider;
 
-		public MainWindowViewModel(IDialogService dialogService, ISourceDataProvider sourceDataProvider)
+		public MainWindowViewModel(IDialogService dialogService, ISourceDataProvider sourceDataProvider, IGraphFactory graphProvider)
 		{
 			_dialogService = dialogService;
 			_sourceDataProvider = sourceDataProvider;
+			_graphProvider = graphProvider;
 
 			SourceDatas = new ObservableCollection<ISourceData>();
 			Graphs = new ObservableCollection<IGraph>();
 		}
 		
-		public ObservableCollection<IGraph> Graphs { get; set; }
-		public ObservableCollection<ISourceData> SourceDatas { get; set; }
+		public ObservableCollection<IGraph> Graphs { get; }
+		public ObservableCollection<ISourceData> SourceDatas { get; }
 
 		private IGraph _selectedGraph;
 		public IGraph SelectedGraph
@@ -72,7 +74,7 @@ namespace UiS2pViewer
 				return _addNewGraphCommand ??
 					(_addNewGraphCommand = new RelayCommand(obj =>
 					{
-						Graphs.Add(new Graph() { Name = "New graph", FunctionList = new ObservableCollection<IFunction>() });
+						Graphs.Add(_graphProvider.GetGraph(SourceDatas));
 						SelectedGraph = Graphs.LastOrDefault();
 					}
 					));

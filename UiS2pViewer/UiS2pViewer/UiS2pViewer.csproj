@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FunctionProvider.cs" />
+    <Compile Include="GraphFactory.cs" />
+    <Compile Include="Interfaces\IFunctionProvider.cs" />
+    <Compile Include="Interfaces\IGraphFactory.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="DefaultDialogService.cs" />
     <Compile Include="Interfaces\IDialogService.cs" />

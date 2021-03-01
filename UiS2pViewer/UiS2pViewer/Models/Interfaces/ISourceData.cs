@@ -1,8 +1,12 @@
-﻿namespace UiS2pViewer.Models.Interfaces
+﻿using normalizerS2Pfiles;
+using System.Collections.Generic;
+
+namespace UiS2pViewer.Models.Interfaces
 {
 	public interface ISourceData
 	{
-		string FullPathS2pFile { get; set; }
 		string Name { get; set; }
+		string FullPathS2pFile { get; }
+		IEnumerable<Sample> Samples { get; }
 	}
 }

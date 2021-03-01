@@ -1,5 +1,6 @@
 ﻿using normalizerS2Pfiles.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.IO;
 
 namespace normalizerS2Pfiles
@@ -44,6 +45,26 @@ namespace normalizerS2Pfiles
 			}
 
 			return "File normalized successfully.";
+		}
+
+		public IEnumerable<Sample> GetSamples()
+		{
+			try
+			{
+				string[] source = File.ReadAllLines(_s2PFileName);
+
+				var format = _s2PReader.GetFormat(source);
+
+				var provider = _s2PProviderFactory.GetS2PProvider(format);
+
+				var result = provider.GetSamples(source);
+
+				return result;
+			}
+			catch (Exception e)
+			{
+				return null;
+			}
 		}
 	}
 }

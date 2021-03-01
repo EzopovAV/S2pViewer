@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="S2pFileService.cs" />
     <Compile Include="S2pProvider\BaseS2PProvider.cs" />
     <Compile Include="S2pProvider\DbS2PProvider.cs" />
     <Compile Include="Enums\DataUnits.cs" />
